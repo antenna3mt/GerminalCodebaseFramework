@@ -31,6 +31,9 @@
 
 	<!-- Inherit GMD Table -->
 	<inherits name="gwt.material.design.GwtMaterialTable" />
+	
+	<!-- Inherit Parallax -->
+	<inherits name="thothbot.parallax.core.Core"/>
 
 
 
