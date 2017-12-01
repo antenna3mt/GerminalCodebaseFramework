@@ -17,6 +17,7 @@ import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import gwt.material.design.client.ui.*;
+import thothbot.parallax.core.client.RenderingPanel;
 import gwt.material.design.client.constants.*;
 
 /**
@@ -46,6 +47,14 @@ public class GerminalCodebaseFramework implements EntryPoint {
 		content.add(new HTML("Hello GWT Material Design"));
 		card.add(cardTitle);
 		card.add(content);
+
+		RenderingPanel renderingPanel = new RenderingPanel();
+		renderingPanel.setBackground(0xcccccc);
+		renderingPanel.setAnimatedScene(new ParallaxScene());
+		renderingPanel.setHeight("800px");
+
 		RootPanel.get("root").add(card);
+		RootPanel.get("root").add(renderingPanel);
+
 	}
 }
