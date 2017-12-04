@@ -96,6 +96,12 @@
 			<systemPath>${basedir}/lib/parallax-1.6.jar</systemPath>
 		</dependency>
 
+		<dependency>
+			<groupId>org.json</groupId>
+			<artifactId>json</artifactId>
+			<version>20171018</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>
