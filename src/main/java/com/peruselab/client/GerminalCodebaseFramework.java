@@ -9,6 +9,8 @@ import com.google.gwt.user.client.ui.*;
 import gwt.material.design.client.ui.*;
 import thothbot.parallax.core.client.RenderingPanel;
 import gwt.material.design.client.constants.*;
+import com.google.gwt.dom.client.Style;
+
 
 /**
  * Entry point classes define <code>onModuleLoad()</code>.
@@ -25,6 +27,43 @@ public class GerminalCodebaseFramework implements EntryPoint {
 	 * Create a remote service proxy to talk to the server-side Greeting service.
 	 */
 	private final GreetingServiceAsync greetingService = GWT.create(GreetingService.class);
+	
+	private Panel generateLayout(Widget w) {
+        /* Header */
+        MaterialHeader header = new MaterialHeader();
+        header.setLayoutPosition(Style.Position.FIXED);
+        header.setTop(0);
+        MaterialNavBar nav = new MaterialNavBar();
+        nav.add(new MaterialNavBrand("Germinal"));
+        nav.setActivates("sidenav");
+        MaterialNavSection navsec = new MaterialNavSection();
+        navsec.setPosition(Position.LEFT);
+        navsec.setHideOn(HideOn.NONE);
+        nav.add(navsec);
+        header.add(nav);
+
+
+        /* Sider */
+        MaterialSideNavPush sider = new MaterialSideNavPush();
+        sider.setWithHeader(true);
+        sider.setId("sidenav");
+        sider.add(new MaterialLink("Project", "", IconType.APPS));
+        sider.setStyle("background-color: #eee");
+
+        /* Container */
+        MaterialContainer container = new MaterialContainer();
+        container.setPaddingTop(100);
+        container.add(w);
+
+
+        MaterialPanel mainPanel = new MaterialPanel();
+        mainPanel.add(header);
+        mainPanel.add(sider);
+        mainPanel.add(container);
+
+        return mainPanel;
+    }
+	
 
 	private Widget TalkPanel() {
 		FlowPanel mainPanel = new FlowPanel();
@@ -126,9 +165,11 @@ public class GerminalCodebaseFramework implements EntryPoint {
 		renderingPanel.setBackground(0xcccccc);
 		renderingPanel.setAnimatedScene(new ParallaxScene());
 		renderingPanel.setHeight("800px");
+		
+		MaterialRow row = new MaterialRow();
+		row.add(card);
+		row.add(renderingPanel);
 
-		RootPanel.get("root").add(card);
-		RootPanel.get("root").add(renderingPanel);
-
+		RootPanel.get("root").add(generateLayout(row));
 	}
 }
