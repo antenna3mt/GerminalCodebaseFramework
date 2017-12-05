@@ -4,9 +4,14 @@ import java.io.*;
 import java.net.*;
 
 public class ElasticDemo {
-	private final String elasticUrl = "http://localhost:9200/";
+	private final String elasticUrl;
 
 	ElasticDemo() {
+		if (System.getenv("GERMINAL_ELASTIC_ADDR") == null) {
+			elasticUrl = "http://localhost:9200/";
+		} else {
+			elasticUrl = "http://" + System.getenv("GERMINAL_ELASTIC_ADDR") + "/";
+		}
 	}
 
 	public String getHealth() {
@@ -21,7 +26,7 @@ public class ElasticDemo {
 			String output = "";
 			String inputLine;
 			while ((inputLine = in.readLine()) != null)
-				output+=inputLine;
+				output += inputLine;
 			in.close();
 			return output;
 		} catch (Exception e) {
