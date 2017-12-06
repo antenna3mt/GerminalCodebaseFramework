@@ -9,7 +9,7 @@
 
 
 
-Github repo: https://github.com/antenna3mt/GerminalCodebaseFramework
+Github repo: https://github.com/germinalcodebase/GerminalCodebaseFramework
 
 ### Commit Init
 
