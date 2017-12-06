@@ -152,6 +152,14 @@ Run maven install to install it.
 
 Implement a class communicate with elasticsearch server with pure Http URL request.
 
+For development, run a elasticsearch server on local
+
+```shell
+docker run -p 9200:9200 -p 9300:9300 -e "cluster.name=elasticsearch" -e "bootstrap.memory_lock=true" -e "xpack.security.enabled=false" -e "discovery.type=single-node" docker.elastic.co/elasticsearch/elasticsearch:6.0.0
+```
+
+
+
 ### Commit get url from env
 
 Let the program get the elasticsearch server address from environment `GERMINAL_ELASTIC_ADDR`.
